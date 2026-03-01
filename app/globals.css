@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 10, 30, 74; /* Deep blue */
+  --background-end-rgb: 12, 45, 107; /* Tilago blue */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 10, 30, 74;
+    --background-end-rgb: 12, 45, 107;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom right,
+      rgb(var(--background-start-rgb)),
+      rgb(var(--background-end-rgb))
+    )
+    fixed;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .glass-container {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  }
+  
+  .tilago-gradient {
+    background: linear-gradient(135deg, #5a189a, #0c2d6b, #0a1e4a);
+    background-size: 200% 200%;
+    animation: gradientShift 8s ease infinite;
+  }
+  
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  .tilago-violet-gradient {
+    background: linear-gradient(135deg, #7b2cbf, #9d4edd, #c77dff);
+  }
+  
+  .tilago-blue-gradient {
+    background: linear-gradient(135deg, #0c2d6b, #0a1e4a);
+  }
+  
+  .product-card {
+    transition: all 0.3s ease;
+    transform: translateY(0);
+  }
+  
+  .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+  
+  .btn-primary {
+    @apply bg-tilago-accent hover:bg-tilago-highlight text-white font-medium py-2 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-tilago-highlight focus:ring-opacity-50;
+  }
+  
+  .btn-secondary {
+    @apply bg-transparent border border-tilago-accent text-tilago-accent hover:bg-tilago-accent hover:text-white font-medium py-2 px-6 rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-tilago-accent focus:ring-opacity-50;
+  }
+  
+  .btn-tertiary {
+    @apply bg-gray-700 hover:bg-gray-600 text-white font-medium py-2 px-6 rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-tilago-accent focus:border-transparent text-white placeholder-gray-400;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold mb-8 text-center relative;
+  }
+  
+  .section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #5a189a, #9d4edd);
+    margin: 10px auto 0;
+    border-radius: 2px;
+  }
+  
+  .section-subtitle {
+    @apply text-lg text-gray-300 mb-12 text-center max-w-2xl mx-auto;
+  }
+}
